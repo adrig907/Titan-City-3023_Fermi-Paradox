@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwiwgchakn2ph"]
+
+[ext_resource type="Texture2D" uid="uid://cumtvq61h01qf" path="res://art/UI/menu.png" id="1_vxkjg"]
+[ext_resource type="Texture2D" uid="uid://cf4mura6e4xsf" path="res://art/UI/menuClick.png" id="2_kak7k"]
+[ext_resource type="Script" path="res://Help.gd" id="3_2cuhf"]
+[ext_resource type="Texture2D" uid="uid://deuwmo4djn53a" path="res://art/UI/help.png" id="3_j7f7g"]
+[ext_resource type="Texture2D" uid="uid://bawtpafg8dyv4" path="res://art/UI/helpHover.png" id="4_5d6yh"]
+[ext_resource type="Script" path="res://HelpButton.gd" id="4_ee17k"]
+[ext_resource type="Script" path="res://LinkPanel.gd" id="4_xnbcs"]
+[ext_resource type="Texture2D" uid="uid://dwrwrmhtglvwl" path="res://art/UI/educate.png" id="6_yuoev"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_dl1qm"]
+allow_unpress = true
+
+[node name="MenuUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -864.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 64.0
+toggle_mode = true
+texture_normal = ExtResource("1_vxkjg")
+texture_pressed = ExtResource("1_vxkjg")
+texture_hover = ExtResource("2_kak7k")
+
+[node name="HelpButton" type="TextureButton" parent="MenuButton"]
+visible = false
+layout_mode = 0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 64.0
+tooltip_text = "How to Play"
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_dl1qm")
+texture_normal = ExtResource("3_j7f7g")
+texture_pressed = ExtResource("3_j7f7g")
+texture_hover = ExtResource("4_5d6yh")
+script = ExtResource("4_ee17k")
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuButton"]
+visible = false
+position = Vector2(0, 64)
+texture = ExtResource("6_yuoev")
+centered = false
+script = ExtResource("4_xnbcs")
+
+[node name="LinkButton" type="LinkButton" parent="MenuButton/Sprite2D"]
+offset_right = 32.0
+offset_bottom = 32.0
+tooltip_text = "Learn more about humans in space"
+uri = "https://www.nasa.gov/humans-in-space/"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 320.0
+script = ExtResource("3_2cuhf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 352.0
+offset_bottom = 224.0
+text = "Manage your resources and time
+
+Select a tile and choose 1, 2, or 3 to build a facility."
+
+[connection signal="toggled" from="MenuButton" to="MenuButton/HelpButton" method="_on_menu_button_toggled"]
+[connection signal="toggled" from="MenuButton" to="MenuButton/Sprite2D" method="_on_menu_button_toggled"]
+[connection signal="toggled" from="MenuButton/HelpButton" to="Panel" method="_on_help_button_toggled" binds= [true]]

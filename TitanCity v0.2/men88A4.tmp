@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwiwgchakn2ph"]
+
+[ext_resource type="Texture2D" uid="uid://bom4d4nk333kf" path="res://art/spr_template.png" id="1_3303r"]
+[ext_resource type="Texture2D" uid="uid://dcxxn2o7o1h6j" path="res://art/spr_again.png" id="2_5jq36"]
+[ext_resource type="Script" path="res://Help.gd" id="3_2cuhf"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_dl1qm"]
+allow_unpress = true
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 320.0
+script = ExtResource("3_2cuhf")
+
+[node name="HelpButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 64.0
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_dl1qm")
+texture_normal = ExtResource("1_3303r")
+texture_pressed = ExtResource("2_5jq36")
+
+[connection signal="toggled" from="HelpButton" to="Panel" method="_on_help_button_toggled"]
