@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cckpro7l5nms6"]
+
+[ext_resource type="Texture2D" uid="uid://jxiqgrhqgg0c" path="res://art/UI/power.png" id="1_kkm8q"]
+[ext_resource type="Texture2D" uid="uid://co24vyaoom5cn" path="res://art/UI/o2.png" id="1_ulta6"]
+[ext_resource type="Texture2D" uid="uid://dr3cl12re12em" path="res://art/UI/food.png" id="2_nwdtd"]
+
+[node name="ResourceList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -800.0
+offset_bottom = -268.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="O2" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 176.0
+offset_right = 144.0
+offset_bottom = 192.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="O2"]
+texture = ExtResource("1_ulta6")
+centered = false
+
+[node name="Food" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 208.0
+offset_right = 144.0
+offset_bottom = 224.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Food"]
+texture = ExtResource("2_nwdtd")
+centered = false
+
+[node name="Electricity" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 240.0
+offset_right = 144.0
+offset_bottom = 256.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Electricity"]
+texture = ExtResource("1_kkm8q")
+centered = false
